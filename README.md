@@ -1,2 +1,2 @@
 # cv4e
-cv43 repository
+cv4ecology repository
