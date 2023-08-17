@@ -21,7 +21,7 @@ def coco2yolo(coco_annotations_path, image_folder, output_folder):
         os.makedirs(output_folder)
 
     # Create a dictionary for mapping image id to filename
-    image_id_to_name = {img["id"]: img["file_name"] for img in data["images"]}
+    image_id_to_name = {img["id"]: img["file_name"].replace('.jpg', '') for img in data["images"]}
 
     # Convert COCO annotations to YOLO format
     for annotation in data["annotations"]:
@@ -44,7 +44,7 @@ def coco2yolo(coco_annotations_path, image_folder, output_folder):
         # Write output text file
         with open(os.path.join(output_folder, f"{image_name}.txt"), "a") as f:
             f.write(f"{class_id} {x_center} {y_center} {width} {height}\n")
-
+        
 def main():
     coco2yolo(coco_annotations_path, image_folder, output_folder)
 
