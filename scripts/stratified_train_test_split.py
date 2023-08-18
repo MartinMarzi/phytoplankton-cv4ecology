@@ -12,6 +12,8 @@ all_images = [f for f in os.listdir(data_dir) if os.path.isfile(os.path.join(dat
 
 # Extract classes from filenames
 classes = [img.split('_')[1] for img in all_images]
+classes = classes.remove('Store')
+
 
 # Perform an 80-20 train-test split with stratification on classes
 train_images, test_images = train_test_split(all_images, test_size=0.2, random_state=42, stratify=classes)
