@@ -1,5 +1,5 @@
 # Train/test sets 
-path: /Users/mmarzi/MLprojects/cv4e/dataset/data_bbox/processed  # dataset root dir
+path: /mnt/ssd-cluster/martin/datasets/bbox  # dataset root dir
 train: images/train  # train images (relative to 'path') 128 images
 val: images/test  # val images (relative to 'path') 128 images
 
