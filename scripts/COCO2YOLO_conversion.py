@@ -4,11 +4,6 @@ import json
 import shutil
 from PIL import Image
 
-# testing
-coco_annotations_path = "/Users/mmarzi/MLprojects/cv4e/dataset/data_bbox/raw/Bounding Box 1/annotations/instances_default.json"
-output_folder = "/Users/mmarzi/MLprojects/cv4e/dataset/data_bbox/interim"
-image_folder =  "/Users/mmarzi/MLprojects/cv4e/dataset/data_bbox/raw/Bounding Box 1"
-
 def coco2yolo(coco_annotations_path, image_folder, output_folder):
     """
     Converts COCO format to JOLO format
@@ -45,7 +40,15 @@ def coco2yolo(coco_annotations_path, image_folder, output_folder):
         with open(os.path.join(output_folder, f"{image_name}.txt"), "a") as f:
             f.write(f"{class_id} {x_center} {y_center} {width} {height}\n")
         
-def main():
-    coco2yolo(coco_annotations_path, image_folder, output_folder)
 
-main()
+# Example usage
+coco_annotations_dir = "/Users/mmarzi/MLprojects/cv4e/dataset/data_bbox/raw/Bounding Box 2/annotations/instances_default.json"
+output_dir = "/Users/mmarzi/MLprojects/cv4e/dataset/data_bbox/interim"
+image_dir =  "/Users/mmarzi/MLprojects/cv4e/dataset/data_bbox/raw/Bounding Box 2"
+coco2yolo(coco_annotations_dir, image_dir, output_dir)
+
+
+# def main():
+#     coco2yolo(coco_annotations_path, image_folder, output_folder)
+
+# main()

@@ -1,12 +1,6 @@
 import cv2
 import os
 
-# testing
-output_folder = "/Users/mmarzi/MLprojects/cv4e/dataset/data_bbox/interim"
-yolo_annotations_dir =  "/Users/mmarzi/MLprojects/cv4e/dataset/data_bbox/interim/bbox1"
-image_dir = "/Users/mmarzi/MLprojects/cv4e/dataset/data_bbox/interim/bbox1"
-image_name = "Pn_calliantha_20230523_0DB2_1"
-
 def display_yolo_bboxes(image_dir, yolo_annotations_dir, image_name):
     # Load the image
     image_path = os.path.join(image_dir, image_name + ".jpg")
@@ -33,8 +27,9 @@ def display_yolo_bboxes(image_dir, yolo_annotations_dir, image_name):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
+
 # Example usage
-image_directory = 'path_to_images'
-yolo_annotation_directory = 'path_to_yolo_annotations'
-sample_image_name = 'sample_image'  # Without the file extension
+image_directory = "/Users/mmarzi/MLprojects/cv4e/dataset/data_bbox/interim/bbox2"
+yolo_annotation_directory = "/Users/mmarzi/MLprojects/cv4e/dataset/data_bbox/interim/bbox2"
+sample_image_name = "Pn_calliantha_20230601_0DB2_12"
 display_yolo_bboxes(image_directory, yolo_annotation_directory, sample_image_name)
