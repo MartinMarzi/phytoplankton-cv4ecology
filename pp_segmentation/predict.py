@@ -4,7 +4,7 @@ from ultralytics import YOLO
 model = YOLO("/home/martin/cv4e/pp_segmentation/runs/segment/train5/weights/best.pt")
 
 # Define path to the image file
-source = "/mnt/ssd-cluster/martin/datasets/mask/images/test/Pn_calliantha_20230523_0035_13.jpg"
+source = "/mnt/ssd-cluster/martin/datasets/mask/images/test/Pn_calliantha_20230523_0035_9.jpg"
 
 # Predict with the model
-results = model(source)
+results = model(source,  save=True)
