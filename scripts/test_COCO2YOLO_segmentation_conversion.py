@@ -12,7 +12,7 @@ def display_yolo_segmentations(image_dir, yolo_annotations_dir, image_name):
 
     img_height, img_width = image.shape[:2]
 
-    # Read YOLO annotations for the image
+    # Read YOLO annotations for the image in the image_dir
     annotation_path = os.path.join(yolo_annotations_dir, image_name + ".txt")
     with open(annotation_path, 'r') as file:
         lines = file.readlines()
