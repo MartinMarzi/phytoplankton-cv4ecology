@@ -9,7 +9,7 @@ os.environ["COMET_API_KEY"]= COMET_API_KEY
 comet_ml.init("pp_seg")
 
 # Load a model
-model = YOLO("yolov8s-seg.pt")
+model = YOLO("yolov8n-seg.pt")
 
 # Train the model
-results = m/home/martin/cv4e/pp_segmentation/wandbodel.train(data="pp.yaml", epochs=1, imgsz=640, cfg="config.yaml")
+results = model.train(data="pp.yaml", epochs=50, imgsz=640, cfg="config.yaml")
