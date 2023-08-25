@@ -12,4 +12,4 @@ comet_ml.init("pp_seg")
 model = YOLO("yolov8n-seg.pt")
 
 # Train the model
-results = model.train(data="pp.yaml", epochs=50, imgsz=640, cfg="config.yaml")
+results = model.train(data="pp.yaml", epochs=20, imgsz=1920, cfg="config.yaml") # 
