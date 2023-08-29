@@ -14,7 +14,8 @@ model = YOLO("yolov8n-seg.pt")
 # Train the model
 results = model.train(
     data="pp.yaml", 
-    epochs=20, 
+    epochs=70, 
     imgsz=1920, 
     cfg="config.yaml",
-    ) # name=
+    name="resol=1920_epochs=70"
+    )

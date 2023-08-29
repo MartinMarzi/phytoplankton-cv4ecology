@@ -5,7 +5,7 @@ model = YOLO("/home/martin/cv4e/pp_segmentation/pp_segment/train3/weights/best.p
 
 # Validate the model
 metrics = model.val(
-    save_json=True,  
+    save_json=True, 
     cfg="config.yaml")
 
 metrics.box.map    # map50-95(B)
