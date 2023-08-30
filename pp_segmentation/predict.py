@@ -1,8 +1,9 @@
 from ultralytics import YOLO
+import ipdb
 
 # Load model
 model = YOLO(
-    "/home/martin/cv4e/pp_segmentation/pp_segment/train3/weights/best.pt"
+    "/home/martin/cv4e/pp_segmentation/pp_segment/resol=1920_epochs=70/weights/best.pt"
     )
 
 # Define path to the image file
@@ -13,17 +14,23 @@ results = model(
     source, 
     save=True, 
     save_txt = True,
-    save_conf=True,
+    save_conf=False,
     retina_masks=True, 
     imgsz=1920,
+    iou = 0.2,
+    name="pred_resol=1920_epochs=70_iou=0.2_",
     cfg="config.yaml"
     ) # show=True, 
 
 # View results
-count = 0
 for result in results:
-    masks = result.masks.xyn  # Masks object for segmentation masks outputs
-    print(f"mask {count}\nnr. pixesl: {len(masks[count])} \n{masks}")  # print the Masks object containing the detected instance masks
+    masks = result.masks # Masks object for segmentation masks outputs
+    for mask in masks.xyn:
+        print(mask)
+    # print(f"mask {count}\n{masks}")  # print the Masks object containing the detected instance masks
+    # print(f"mask nr. pixels: {len(masks)}")  # print the Masks object containing the detected instance masks
     # print(f"box: {result.boxes.xyxy}")  # print the Boxes object containing the detection bounding boxes
-    count=+1
+    
+    # ipdb.set_trace()
+
 
