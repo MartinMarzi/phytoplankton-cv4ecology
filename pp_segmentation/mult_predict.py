@@ -1,5 +1,7 @@
 from ultralytics import YOLO
 import os
+import numpy as np
+import matplotlib.pylab as plt
 
 # Load model
 model = YOLO(
@@ -7,7 +9,7 @@ model = YOLO(
     )
 
 # Get all image file path names for the test set
-dir_path = "/mnt/ssd-cluster/martin/datasets/mask/images/holdout"
+dir_path = "/mnt/ssd-cluster/martin/datasets/mask/images/test"
 source = [os.path.join(dir_path, f) for f in os.listdir(dir_path)]
 
 # Predict with the model
@@ -23,16 +25,34 @@ results = model(
     cfg="config.yaml"
     ) # show=True, 
 
+data = []
 
-# # View results
-# for result in results:
-#     masks = result.masks # Masks object for segmentation masks outputs
-#     for mask in masks.xyn:
-#         print(mask)
-#     # print(f"mask {count}\n{masks}")  # print the Masks object containing the detected instance masks
-#     # print(f"mask nr. pixels: {len(masks)}")  # print the Masks object containing the detected instance masks
-#     # print(f"box: {result.boxes.xyxy}")  # print the Boxes object containing the detection bounding boxes
+for image in results:
+    interm = image.masks.cpu() # Masks object for segmentation masks outputs
+    masks = interm.data.numpy()
+    # print (f"type is {type(masks)} and shape is {masks.shape}")
+    num_masks = masks.shape[0]
+    print (f"Number of masks detected is {num_masks}")
+    # get image name
+    img_path = image.path
+    img_name = os.path.basename(img_path)
+
+    for idx in range(0,num_masks):
+        print (f"Mask number: {idx+1}")
+        individual_mask = masks[idx]
+        plt.imshow(individual_mask)
+        # Save the plot to a file
+        output_path = "/home/martin/cv4e/evaluation/evaluation_data/pred_test/mask.png"
+        plt.savefig(output_path)
+        # get class
+        mask_class = str(int(image.boxes.cls.cpu().numpy()[idx]))
+        # print(image.names[mask_class])
+        print(f"mask class is: {mask_class}")
+        # Calculate the surface
+        x_ones,y_ones = np.where(individual_mask == 1)
+        surface = x_ones.shape[0]
+        confidence = max(image.boxes.conf.cpu().numpy())
+        print (f"Number of pixels is {number_of_ones}")
     
-#     # ipdb.set_trace()
-
+        data.append([mask_class, surface, confidence, img_name, idx])
 
