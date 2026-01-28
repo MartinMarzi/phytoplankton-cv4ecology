@@ -1,2 +1,7 @@
-# cv4e
-cv4ecology repository
+# Computer Vision Techniques for Morphological Analysis and Identification of Two Pseudo-nitzschia Species
+The diversity of phytoplankton influences the structure of and processes that occur in marine ecosystems, with size and other morphological traits being crucial for nutrient uptake and retention in the euphotic zone. Our research introduces a machine learning method that can facilitate the analysis of phytoplankton functional traits from image data. We use computer vision to identify and quantify phytoplankton species and estimate size-related traits based on cell morphology. The study uses transfer learning, where generic, pre-trained YOLOv8 computer vision models are fine-tuned with microscope image data from the Adriatic Sea. The study shows that, for this task, it is possible to effectively fine-tune models trained on out-of-domain images and that this is possible with a small training dataset. The results show high accuracy in detecting and segmenting phytoplankton cells from the microscopic images of the two selected phytoplankton taxa. For detection, the model achieves AP scores of 88.1% for Pseudo-nitzschia cf. delicatissima and 90.9% for Pseudo-nitzschia cf. calliantha, while for segmentation, the scores are 88.4% for Pseudo-nitzschia cf. delicatissima and 91.2% for Pseudo-nitzschia cf. calliantha. Compared to manual image analysis, the developed automatic method significantly increases the number of samples that can be processed.
+
+Keywords: computer vision; transfer learning; machine learning; phytoplankton; cell size; marine biology
+
+## Read the Full Paper
+For more detailed insights and methodologies, read the full paper here: [Computer Vision Techniques for Morphological Analysis and Identification of Two Pseudo-nitzschia Species](https://www.mdpi.com/2073-4441/16/15/2160)
